@@ -2,15 +2,16 @@
 
 -- Global defaults: use spaces, 4 spaces per indent
 vim.opt.expandtab = true
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
 
 -- Per-language indentation settings
 local indent_settings = {
   -- 2 spaces for JS/TS
   ["javascript"] = { shiftwidth = 2, tabstop = 2, softtabstop = 2, expandtab = true },
   ["typescript"] = { shiftwidth = 2, tabstop = 2, softtabstop = 2, expandtab = true },
+  ["astro"] = { shiftwidth = 2, tabstop = 2, softtabstop = 2, expandtab = true },
   ["json"] = { shiftwidth = 2, tabstop = 2, softtabstop = 2, expandtab = true },
   ["css"] = { shiftwidth = 2, tabstop = 2, softtabstop = 2, expandtab = true },
   ["html"] = { shiftwidth = 2, tabstop = 2, softtabstop = 2, expandtab = true },

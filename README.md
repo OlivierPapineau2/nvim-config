@@ -10,34 +10,39 @@ A modern Neovim configuration built with [lazy.nvim](https://github.com/folke/la
 - 📁 **File explorer** with NvimTree
 - 🧠 **Smart completion** with nvim-cmp and LSP
 - 🌳 **Syntax highlighting** with TreeSitter
-- 📝 **Code formatting** with LSP
+- 📝 **Advanced code formatting** with Conform.nvim
+- 🔧 **Enhanced LSP experience** with LSPSaga
 - 💬 **Easy commenting** with Comment.nvim
-- 🔧 **LSP support** with Mason and nvim-lspconfig
+- 🛠️ **LSP management** with Mason and nvim-lspconfig
+- ⚡ **Format on save** with automatic code formatting
+- 🎯 **Improved diagnostics** with LSPSaga integration
 
 ## Plugin Overview
 
 ### Core Plugins
 
-| Plugin                              | Description            |
-| ----------------------------------- | ---------------------- |
-| **lazy.nvim**                       | Fast plugin manager    |
-| **catppuccin/nvim**                 | Beautiful color scheme |
-| **nvim-lualine/lualine.nvim**       | Modern statusline      |
-| **akinsho/bufferline.nvim**         | Tab/buffer line        |
-| **nvim-tree/nvim-tree.lua**         | File explorer          |
-| **nvim-telescope/telescope.nvim**   | Fuzzy finder           |
-| **nvim-treesitter/nvim-treesitter** | Syntax highlighting    |
+| Plugin | Description | Links |
+| ------ | ----------- | ----- |
+| **lazy.nvim** | Fast plugin manager | [GitHub](https://github.com/folke/lazy.nvim) |
+| **catppuccin/nvim** | Beautiful color scheme | [GitHub](https://github.com/catppuccin/nvim) |
+| **nvim-lualine/lualine.nvim** | Modern statusline | [GitHub](https://github.com/nvim-lualine/lualine.nvim) |
+| **akinsho/bufferline.nvim** | Tab/buffer line | [GitHub](https://github.com/akinsho/bufferline.nvim) |
+| **nvim-tree/nvim-tree.lua** | File explorer | [GitHub](https://github.com/nvim-tree/nvim-tree.lua) \| [Docs](https://github.com/nvim-tree/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt) |
+| **nvim-telescope/telescope.nvim** | Fuzzy finder | [GitHub](https://github.com/nvim-telescope/telescope.nvim) \| [Docs](https://github.com/nvim-telescope/telescope.nvim#telescope-nvim) |
+| **nvim-treesitter/nvim-treesitter** | Syntax highlighting | [GitHub](https://github.com/nvim-treesitter/nvim-treesitter) \| [Docs](https://github.com/nvim-treesitter/nvim-treesitter#nvim-treesitter) |
 
 ### Development Plugins
 
-| Plugin                    | Description              |
-| ------------------------- | ------------------------ |
-| **neovim/nvim-lspconfig** | LSP configuration        |
-| **mason-org/mason.nvim**  | LSP/DAP/Linter installer |
-| **hrsh7th/nvim-cmp**      | Completion engine        |
-| **windwp/nvim-autopairs** | Auto-pair brackets       |
-| **numToStr/Comment.nvim** | Easy commenting          |
-| **L3MON4D3/LuaSnip**      | Snippet engine           |
+| Plugin | Description | Links |
+| ------ | ----------- | ----- |
+| **neovim/nvim-lspconfig** | LSP configuration | [GitHub](https://github.com/neovim/nvim-lspconfig) \| [Docs](https://github.com/neovim/nvim-lspconfig/blob/master/doc/lspconfig.txt) |
+| **mason-org/mason.nvim** | LSP/DAP/Linter installer | [GitHub](https://github.com/williamboman/mason.nvim) \| [Docs](https://github.com/williamboman/mason.nvim#mason.nvim) |
+| **hrsh7th/nvim-cmp** | Completion engine | [GitHub](https://github.com/hrsh7th/nvim-cmp) \| [Wiki](https://github.com/hrsh7th/nvim-cmp/wiki) |
+| **windwp/nvim-autopairs** | Auto-pair brackets | [GitHub](https://github.com/windwp/nvim-autopairs) |
+| **numToStr/Comment.nvim** | Easy commenting | [GitHub](https://github.com/numToStr/Comment.nvim) \| [Docs](https://github.com/numToStr/Comment.nvim#comment.nvim) |
+| **L3MON4D3/LuaSnip** | Snippet engine | [GitHub](https://github.com/L3MON4D3/LuaSnip) \| [Docs](https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md) |
+| **stevearc/conform.nvim** | Advanced code formatting | [GitHub](https://github.com/stevearc/conform.nvim) \| [Docs](https://github.com/stevearc/conform.nvim#conform.nvim) |
+| **nvimdev/lspsaga.nvim** | Enhanced LSP UI and features | [GitHub](https://github.com/nvimdev/lspsaga.nvim) \| [Docs](https://nvimdev.github.io/lspsaga/) |
 
 ## Installation
 
@@ -80,6 +85,8 @@ A modern Neovim configuration built with [lazy.nvim](https://github.com/folke/la
 │   │   ├── nvim-tree.lua   # File explorer
 │   │   ├── lsp.lua         # LSP setup
 │   │   ├── cmp.lua         # Completion
+│   │   ├── conform.lua     # Code formatting
+│   │   ├── lspsaga.lua     # Enhanced LSP UI
 │   │   └── ...             # Other plugins
 │   └── user/               # Custom user functions
 │       └── lsp_format.lua  # LSP formatting
@@ -94,10 +101,12 @@ A modern Neovim configuration built with [lazy.nvim](https://github.com/folke/la
 
 ### File Management
 
-| Keymap      | Description                    |
-| ----------- | ------------------------------ |
-| `<leader>e` | Focus NvimTree file explorer   |
-| `<leader>f` | Format current buffer with LSP |
+| Keymap      | Description                      |
+| ----------- | -------------------------------- |
+| `<leader>e` | Focus NvimTree file explorer     |
+| `<leader>f` | Format current buffer with Conform |
+| `<leader>m` | Open Mason installer             |
+| `<leader>mi`| Prefill MasonInstall command     |
 
 ### Telescope (Fuzzy Finder)
 
@@ -157,15 +166,20 @@ A modern Neovim configuration built with [lazy.nvim](https://github.com/folke/la
 
 LSP keymaps are automatically set up when a language server is attached:
 
-| Keymap       | Description         |
-| ------------ | ------------------- |
-| `gd`         | Go to definition    |
-| `gr`         | Go to references    |
-| `K`          | Hover documentation |
-| `[d`         | Previous diagnostic |
-| `]d`         | Next diagnostic     |
-| `<leader>ca` | Code actions        |
-| `<leader>rn` | Rename symbol       |
+| Keymap        | Description                  |
+| ------------- | ---------------------------- |
+| `gd`          | Go to definition             |
+| `gr`          | Go to references             |
+| `K`           | LSPSaga hover documentation  |
+| `[e`          | Previous diagnostic          |
+| `]e`          | Next diagnostic              |
+| `<leader>ca`  | LSPSaga code actions         |
+| `<leader>rn`  | Rename symbol                |
+| `<leader>cd`  | Show cursor diagnostics      |
+| `<leader>ld`  | Show line diagnostics        |
+| `<leader>bd`  | Show buffer diagnostics      |
+| `<leader>wd`  | Show workspace diagnostics   |
+| `<M-d>`       | Toggle LSPSaga terminal      |
 
 ### NvimTree (File Explorer)
 
@@ -192,7 +206,7 @@ LSP keymaps are automatically set up when a language server is attached:
 The configuration includes TreeSitter parsers for:
 
 - Bash, C, HTML, JavaScript, JSON, Lua, Markdown
-- Python, TypeScript, TSX, Vim, YAML
+- Python, TypeScript, TSX, Vim, YAML, Astro
 - And many more...
 
 ### LSP Servers
@@ -200,12 +214,30 @@ The configuration includes TreeSitter parsers for:
 Currently configured for:
 
 - **TypeScript/JavaScript**: `typescript-language-server`
+- **Astro**: Support added for Astro framework files
 
 Additional LSP servers can be installed via Mason:
 
 ```vim
 :Mason
 ```
+
+### Code Formatting
+
+The configuration now uses **Conform.nvim** for advanced code formatting:
+
+- **Automatic formatting on save** for all supported file types
+- **Multiple formatter support** with fallback options
+- **Language-specific formatters**:
+  - Lua: `stylua`
+  - JavaScript/TypeScript: `prettierd` or `prettier`
+  - Astro: `prettierd` or `prettier`
+
+### Indentation Settings
+
+- **Default**: 2 spaces (changed from 4)
+- **Language-specific indentation** for JavaScript, TypeScript, Astro, JSON, CSS, and HTML
+- **Consistent formatting** across all supported file types
 
 ## Customization
 
