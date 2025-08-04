@@ -1,14 +1,25 @@
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+-- Remap leader key to space
 vim.g.mapleader = " "
 
--- Remap leader key to space
 vim.keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<Tab>", ":bnext<CR>")
-vim.keymap.set("n", "<S-Tab>", ":bprev<CR>")
+
+vim.keymap.set("n", "<leader>H", "<C-w>h", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>J", "<C-w>j", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>K", "<C-w>k", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>L", "<C-w>l", { noremap = true, silent = true })
+
+vim.keymap.set("n", "]b", ":bnext<CR>")
+vim.keymap.set("n", "[b", ":bprev<CR>")
+
 vim.keymap.set("n", "<leader>m", ":Mason<CR>", { desc = "Open Mason" })
 vim.keymap.set("n", "<leader>mi", ":MasonInstall", { desc = "Prefill MasonInstall" })
 vim.keymap.set("n", "K", ":Lspsaga hover_doc<CR>")
 
 vim.keymap.set("n", "<M-d>", ":Lspsaga term_toggle<CR>")
+vim.keymap.set("n", "<A-d>", ":Lspsaga term_toggle<CR>")
 vim.keymap.set("t", "<M-d>", ":Lspsaga term_toggle<CR>")
 
 -- Jump to next/prev diagnostic
@@ -26,6 +37,8 @@ vim.keymap.set("v", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "Code
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
+
+vim.opt.laststatus = 3
 
 require("config.lazy")
 
