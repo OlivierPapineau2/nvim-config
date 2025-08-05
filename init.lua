@@ -34,13 +34,13 @@ vim.keymap.set("n", "<leader>wd", "<cmd>Lspsaga show_workspace_diagnostics<CR>",
 vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "Code Action" })
 vim.keymap.set("v", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "Code Action" })
 
+vim.keymap.set("n", "<leader>cc", "<cmd>ClaudeCode<CR>", { desc = "Toggle Claude Code" })
+
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.opt.laststatus = 3
-
-require("config.lazy")
 
 --- START Formatting
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -57,11 +57,13 @@ vim.keymap.set("n", "<leader>f", function()
 end, { desc = "Format with current LSP" })
 --- END Formatting
 
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
-vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
-vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function()
+		vim.treesitter.start()
+	end,
+})
 
+require("config.lazy")
 require("Comment").setup()
 require("config.indent")
