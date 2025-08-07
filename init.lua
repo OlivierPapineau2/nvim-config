@@ -41,6 +41,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.opt.laststatus = 3
+-- vim.o.fillchars = "vert:~,horiz:━"
 
 --- START Formatting
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -65,5 +66,4 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 require("config.lazy")
-require("Comment").setup()
 require("config.indent")
