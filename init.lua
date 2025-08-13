@@ -20,7 +20,7 @@ vim.keymap.set("n", "K", ":Lspsaga hover_doc<CR>")
 
 vim.keymap.set("n", "<M-d>", ":Lspsaga term_toggle<CR>")
 vim.keymap.set("n", "<A-d>", ":Lspsaga term_toggle<CR>")
-vim.keymap.set("t", "<M-d>", ":Lspsaga term_toggle<CR>")
+vim.keymap.set("t", "<M-d>", "exit<CR>")
 
 -- Jump to next/prev diagnostic
 vim.keymap.set("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Next diagnostic" })
@@ -35,6 +35,8 @@ vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "Code
 vim.keymap.set("v", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "Code Action" })
 
 vim.keymap.set("n", "<leader>cc", "<cmd>ClaudeCode<CR>", { desc = "Toggle Claude Code" })
+vim.keymap.set("n", "<leader>bd", ":Bdelete<CR>", { desc = "Delete current buffer" })
+vim.keymap.set("n", "<leader>bw", ":Bwipeout<CR>", { desc = "Delete delete all open buffers" })
 
 vim.opt.termguicolors = true
 vim.opt.number = true
