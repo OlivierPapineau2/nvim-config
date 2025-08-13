@@ -15,7 +15,10 @@ A modern Neovim configuration built with [lazy.nvim](https://github.com/folke/la
 - 💬 **Easy commenting** with Comment.nvim
 - 🛠️ **LSP management** with Mason and nvim-lspconfig
 - ⚡ **Format on save** with automatic code formatting
-- 🎯 **Improved diagnostics** with LSPSaga integration
+- 🎯 **Improved diagnostics** with LSPSaga integration and lsp_lines
+- 🤖 **AI assistance** with GitHub Copilot integration
+- 🔗 **Tmux integration** for seamless navigation between Neovim and tmux panes
+- 🗑️ **Better buffer management** with bufdelete.nvim
 
 ## Plugin Overview
 
@@ -43,6 +46,20 @@ A modern Neovim configuration built with [lazy.nvim](https://github.com/folke/la
 | **L3MON4D3/LuaSnip** | Snippet engine | [GitHub](https://github.com/L3MON4D3/LuaSnip) \| [Docs](https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md) |
 | **stevearc/conform.nvim** | Advanced code formatting | [GitHub](https://github.com/stevearc/conform.nvim) \| [Docs](https://github.com/stevearc/conform.nvim#conform.nvim) |
 | **nvimdev/lspsaga.nvim** | Enhanced LSP UI and features | [GitHub](https://github.com/nvimdev/lspsaga.nvim) \| [Docs](https://nvimdev.github.io/lspsaga/) |
+
+### AI & Productivity Plugins
+
+| Plugin | Description | Links |
+| ------ | ----------- | ----- |
+| **zbirenbaum/copilot.lua** | GitHub Copilot integration | [GitHub](https://github.com/zbirenbaum/copilot.lua) |
+| **lsp_lines.nvim** | Enhanced diagnostic display | [SourceHut](https://git.sr.ht/~whynothugo/lsp_lines.nvim) |
+
+### Navigation & Buffer Management
+
+| Plugin | Description | Links |
+| ------ | ----------- | ----- |
+| **christoomey/vim-tmux-navigator** | Seamless tmux/vim navigation | [GitHub](https://github.com/christoomey/vim-tmux-navigator) |
+| **famiu/bufdelete.nvim** | Better buffer deletion | [GitHub](https://github.com/famiu/bufdelete.nvim) |
 
 ## Installation
 
@@ -87,6 +104,10 @@ A modern Neovim configuration built with [lazy.nvim](https://github.com/folke/la
 │   │   ├── cmp.lua         # Completion
 │   │   ├── conform.lua     # Code formatting
 │   │   ├── lspsaga.lua     # Enhanced LSP UI
+│   │   ├── copilot.lua     # GitHub Copilot AI
+│   │   ├── lsp_lines.lua   # Enhanced diagnostics
+│   │   ├── bufdelete.lua   # Buffer management
+│   │   ├── tmux-nvim-nav.lua # Tmux navigation
 │   │   └── ...             # Other plugins
 │   └── user/               # Custom user functions
 │       └── lsp_format.lua  # LSP formatting
@@ -107,6 +128,7 @@ A modern Neovim configuration built with [lazy.nvim](https://github.com/folke/la
 | `<leader>f` | Format current buffer with Conform |
 | `<leader>m` | Open Mason installer             |
 | `<leader>mi`| Prefill MasonInstall command     |
+| `<leader>l` | Toggle lsp_lines diagnostics      |
 
 ### Telescope (Fuzzy Finder)
 
@@ -180,6 +202,24 @@ LSP keymaps are automatically set up when a language server is attached:
 | `<leader>bd`  | Show buffer diagnostics      |
 | `<leader>wd`  | Show workspace diagnostics   |
 | `<M-d>`       | Toggle LSPSaga terminal      |
+
+### Tmux Navigation
+
+| Keymap   | Description               |
+| -------- | ------------------------- |
+| `<C-h>`  | Navigate to left pane     |
+| `<C-j>`  | Navigate to bottom pane   |
+| `<C-k>`  | Navigate to top pane      |
+| `<C-l>`  | Navigate to right pane    |
+| `<C-\>`  | Navigate to previous pane |
+
+### AI Assistance (Copilot)
+
+GitHub Copilot provides intelligent code completion and suggestions:
+
+- **Automatic activation**: Triggers on `InsertEnter`
+- **Commands**: Access via `:Copilot` command
+- **Integration**: Works seamlessly with nvim-cmp completion
 
 ### NvimTree (File Explorer)
 
@@ -283,6 +323,18 @@ Modify `lua/plugins/colorscheme.lua` to change the Catppuccin flavor:
 - Run `:Lazy profile` to see startup times
 - Use `:Lazy check` to check for updates
 - Consider lazy-loading plugins with `event` or `cmd` options
+
+### Copilot Issues
+
+- Run `:Copilot status` to check authentication
+- Use `:Copilot auth` to authenticate with GitHub
+- Check `:Copilot log` for debugging information
+
+### Diagnostic Display Issues
+
+- Use `<leader>l` to toggle lsp_lines diagnostic display
+- Standard virtual text diagnostics are replaced by lsp_lines
+- Check LSP server status if diagnostics aren't appearing
 
 ## Contributing
 
