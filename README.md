@@ -19,6 +19,8 @@ A modern Neovim configuration built with [lazy.nvim](https://github.com/folke/la
 - 🤖 **AI assistance** with GitHub Copilot integration
 - 🔗 **Tmux integration** for seamless navigation between Neovim and tmux panes
 - 🗑️ **Better buffer management** with bufdelete.nvim
+- 🎯 **Go-to-definition** with LSPSaga integration for quick code navigation
+- 📍 **Smart file tree** that automatically focuses on current file like VSCode
 
 ## Plugin Overview
 
@@ -122,13 +124,14 @@ A modern Neovim configuration built with [lazy.nvim](https://github.com/folke/la
 
 ### File Management
 
-| Keymap      | Description                      |
-| ----------- | -------------------------------- |
-| `<leader>e` | Focus NvimTree file explorer     |
-| `<leader>f` | Format current buffer with Conform |
-| `<leader>m` | Open Mason installer             |
-| `<leader>mi`| Prefill MasonInstall command     |
-| `<leader>l` | Toggle lsp_lines diagnostics      |
+| Keymap      | Description                           |
+| ----------- | ------------------------------------- |
+| `<leader>e` | Focus NvimTree file explorer          |
+| `<leader>ef`| Find current file in NvimTree         |
+| `<leader>f` | Format current buffer with Conform    |
+| `<leader>m` | Open Mason installer                  |
+| `<leader>mi`| Prefill MasonInstall command          |
+| `<leader>l` | Toggle lsp_lines diagnostics           |
 
 ### Telescope (Fuzzy Finder)
 
@@ -217,11 +220,31 @@ LSP keymaps are automatically set up when a language server is attached:
 
 GitHub Copilot provides intelligent code completion and suggestions:
 
-- **Automatic activation**: Triggers on `InsertEnter`
-- **Commands**: Access via `:Copilot` command
+| Keymap          | Description                     |
+| --------------- | ------------------------------- |
+| `<M-l>`         | Accept Copilot suggestion       |
+| `<M-]>`         | Next suggestion                 |
+| `<M-[>`         | Previous suggestion             |
+| `<C-]>`         | Dismiss suggestion              |
+| `<M-CR>`        | Open Copilot panel              |
+
+**Panel Navigation** (when open):
+| Keymap | Description              |
+| ------ | ------------------------ |
+| `[[`   | Jump to previous result  |
+| `]]`   | Jump to next result      |
+| `<CR>` | Accept selected result   |
+| `gr`   | Refresh suggestions      |
+
+**Features**:
+- **Auto-trigger**: Suggestions appear automatically while typing
+- **Debounced**: 75ms delay for better performance
+- **Filetype filtering**: Disabled for YAML, Markdown, git commits
 - **Integration**: Works seamlessly with nvim-cmp completion
 
 ### NvimTree (File Explorer)
+
+The file explorer automatically focuses on the current file when you switch buffers, providing VSCode-like behavior for better project navigation awareness.
 
 | Keymap | Description        |
 | ------ | ------------------ |

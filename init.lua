@@ -5,6 +5,7 @@ vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 vim.g.mapleader = " "
 
 vim.keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ef", ":NvimTreeFindFile<CR>", { noremap = true, silent = true, desc = "Find current file in tree" })
 
 vim.keymap.set("n", "<leader>H", "<C-w>h", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>J", "<C-w>j", { noremap = true, silent = true })
@@ -17,6 +18,7 @@ vim.keymap.set("n", "[b", ":bprev<CR>")
 vim.keymap.set("n", "<leader>m", ":Mason<CR>", { desc = "Open Mason" })
 vim.keymap.set("n", "<leader>mi", ":MasonInstall", { desc = "Prefill MasonInstall" })
 vim.keymap.set("n", "K", ":Lspsaga hover_doc<CR>")
+vim.keymap.set("n", "gd", ":Lspsaga goto_definition<CR>", { desc = "Go to definition" })
 
 vim.keymap.set("n", "<M-d>", ":Lspsaga term_toggle<CR>")
 vim.keymap.set("n", "<A-d>", ":Lspsaga term_toggle<CR>")
