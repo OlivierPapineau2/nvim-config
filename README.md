@@ -21,6 +21,8 @@ A modern Neovim configuration built with [lazy.nvim](https://github.com/folke/la
 - 🗑️ **Better buffer management** with bufdelete.nvim
 - 🎯 **Go-to-definition** with LSPSaga integration for quick code navigation
 - 📍 **Smart file tree** that automatically focuses on current file like VSCode
+- 🔧 **Git integration** with Gitsigns for inline git status, hunks, and blame
+- 📊 **Advanced git workflow** with Neogit for Magit-like git interface
 
 ## Plugin Overview
 
@@ -55,6 +57,14 @@ A modern Neovim configuration built with [lazy.nvim](https://github.com/folke/la
 | ------ | ----------- | ----- |
 | **zbirenbaum/copilot.lua** | GitHub Copilot integration | [GitHub](https://github.com/zbirenbaum/copilot.lua) |
 | **lsp_lines.nvim** | Enhanced diagnostic display | [SourceHut](https://git.sr.ht/~whynothugo/lsp_lines.nvim) |
+
+### Git Integration
+
+| Plugin | Description | Links |
+| ------ | ----------- | ----- |
+| **lewis6991/gitsigns.nvim** | Git integration with signs, hunks, and blame | [GitHub](https://github.com/lewis6991/gitsigns.nvim) |
+| **NeogitOrg/neogit** | Magit-like git interface | [GitHub](https://github.com/NeogitOrg/neogit) |
+| **sindrets/diffview.nvim** | Enhanced diff viewing | [GitHub](https://github.com/sindrets/diffview.nvim) |
 
 ### Navigation & Buffer Management
 
@@ -110,6 +120,8 @@ A modern Neovim configuration built with [lazy.nvim](https://github.com/folke/la
 │   │   ├── lsp_lines.lua   # Enhanced diagnostics
 │   │   ├── bufdelete.lua   # Buffer management
 │   │   ├── tmux-nvim-nav.lua # Tmux navigation
+│   │   ├── gitsigns.lua    # Git integration
+│   │   ├── neogit.lua      # Git workflow
 │   │   └── ...             # Other plugins
 │   └── user/               # Custom user functions
 │       └── lsp_format.lua  # LSP formatting
@@ -132,6 +144,26 @@ A modern Neovim configuration built with [lazy.nvim](https://github.com/folke/la
 | `<leader>m` | Open Mason installer                  |
 | `<leader>mi`| Prefill MasonInstall command          |
 | `<leader>l` | Toggle lsp_lines diagnostics           |
+
+### Git Operations (Gitsigns)
+
+| Keymap        | Description                      |
+| ------------- | -------------------------------- |
+| `]c`          | Next git hunk                    |
+| `[c`          | Previous git hunk                |
+| `<leader>hs`  | Stage hunk                       |
+| `<leader>hr`  | Reset hunk                       |
+| `<leader>hS`  | Stage entire buffer              |
+| `<leader>hR`  | Reset entire buffer              |
+| `<leader>hp`  | Preview hunk                     |
+| `<leader>hi`  | Preview hunk inline              |
+| `<leader>hb`  | Show blame for current line      |
+| `<leader>hd`  | Diff current file                |
+| `<leader>hD`  | Diff against previous commit     |
+| `<leader>hq`  | Add hunks to quickfix            |
+| `<leader>hQ`  | Add all hunks to quickfix        |
+| `<leader>tb`  | Toggle line blame                |
+| `<leader>tw`  | Toggle word diff                 |
 
 ### Telescope (Fuzzy Finder)
 
