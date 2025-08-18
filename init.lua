@@ -4,8 +4,17 @@ vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 -- Remap leader key to space
 vim.g.mapleader = " "
 
+vim.keymap.set("n", "<leader>y", '"+y', { noremap = true, silent = true, desc = "Yank to system clipboard" })
+vim.keymap.set("v", "<leader>y", '"+y', { noremap = true, silent = true, desc = "Yank to system clipboard" })
+vim.keymap.set("n", "<leader>Y", '"+Y', { noremap = true, silent = true, desc = "Yank line to system clipboard" })
+
 vim.keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>ef", ":NvimTreeFindFile<CR>", { noremap = true, silent = true, desc = "Find current file in tree" })
+vim.keymap.set(
+	"n",
+	"<leader>ef",
+	":NvimTreeFindFile<CR>",
+	{ noremap = true, silent = true, desc = "Find current file in tree" }
+)
 
 vim.keymap.set("n", "<leader>H", "<C-w>h", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>J", "<C-w>j", { noremap = true, silent = true })
