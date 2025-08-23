@@ -3,6 +3,7 @@ vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 -- Remap leader key to space
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 vim.keymap.set("n", "<leader>y", '"+y', { noremap = true, silent = true, desc = "Yank to system clipboard" })
 vim.keymap.set("v", "<leader>y", '"+y', { noremap = true, silent = true, desc = "Yank to system clipboard" })
@@ -45,13 +46,29 @@ vim.keymap.set("n", "<leader>wd", "<cmd>Lspsaga show_workspace_diagnostics<CR>",
 vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "Code Action" })
 vim.keymap.set("v", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "Code Action" })
 
-vim.keymap.set("n", "<leader>cc", "<cmd>ClaudeCode<CR>", { desc = "Toggle Claude Code" })
 vim.keymap.set("n", "<leader>bd", ":Bdelete<CR>", { desc = "Delete current buffer" })
 vim.keymap.set("n", "<leader>bw", ":Bwipeout<CR>", { desc = "Delete delete all open buffers" })
+
+-- CodeCompanion
+vim.keymap.set({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true, desc = "CodeCompanion Actions" })
+vim.keymap.set({ "n", "v" }, "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true, desc = "Toggle CodeCompanion Chat" })
+vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true, desc = "Add selection to chat" })
+
+-- Inline assistant keymaps (these should match your config)
+vim.keymap.set("n", "<leader>ga", "<cmd>CodeCompanionInline Accept<cr>", { noremap = true, silent = true, desc = "Accept inline change" })
+vim.keymap.set("n", "<leader>gr", "<cmd>CodeCompanionInline Reject<cr>", { noremap = true, silent = true, desc = "Reject inline change" })
+
+-- Additional CodeCompanion keymaps
+vim.keymap.set("n", "<leader>cc", "<cmd>CodeCompanionChat<cr>", { noremap = true, silent = true, desc = "Open CodeCompanion Chat" })
+vim.keymap.set("n", "<leader>ci", "<cmd>CodeCompanionInline<cr>", { noremap = true, silent = true, desc = "Open CodeCompanion Inline" })
+
+vim.cmd([[cab cc CodeCompanion]]) -- Expand 'cc' into 'CodeCompanion' in the command line
+-- End CodeCompanion
 
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.wrap = false
 
 vim.opt.laststatus = 3
 -- vim.o.fillchars = "vert:~,horiz:━"
