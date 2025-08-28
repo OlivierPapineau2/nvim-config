@@ -97,3 +97,4 @@ vim.api.nvim_create_autocmd("FileType", {
 
 require("config.lazy")
 require("config.indent")
+require("user.debug_completion")
